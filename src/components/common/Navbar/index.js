@@ -6,7 +6,7 @@ function NavbarComponent () {
     return (
         <>
             <Navbar sticky="top" bg="light" variant="light">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img
                         alt="LOGO"
                         src={Logo}
