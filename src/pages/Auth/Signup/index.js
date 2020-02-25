@@ -154,13 +154,16 @@ class Signup extends Component {
                                                         type="invalid">{errors.password_confirmation}</Form.Control.Feedback>
                                                     <Form.Control.Feedback>Campo Válido</Form.Control.Feedback>
                                                 </Form.Group>
-                                                <Button variant="success" type="submit" disabled={isSubmitting}>
-                                                    Cadastrar
-                                                </Button>
+                                                <Row className="justify-content-xl-center">
+                                                    <Button variant="success" type="submit" disabled={isSubmitting}>
+                                                        Cadastrar
+                                                    </Button>
+                                                </Row>
                                             </Form>
                                         )}
                                     </Formik>
                                     <div className="text-center">
+                                        <Card.Text/>
                                         <Card.Text>
                                             ou
                                         </Card.Text>
