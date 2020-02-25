@@ -1,24 +1,75 @@
-import React from 'react';
-import {Navbar} from "react-bootstrap";
+import React, {Component} from 'react';
+import {Navbar, Form, FormControl, Button} from "react-bootstrap";
+import {connect} from 'react-redux';
+import {logoutUser} from "../../../actions/authActions";
 import Logo from '../../../media/logonova.png'
 
-function NavbarComponent () {
-    return (
-        <>
-            <Navbar sticky="top" bg="light" variant="light">
-                <Navbar.Brand href="/">
-                    <img
-                        alt="LOGO"
-                        src={Logo}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    />{' '}
-                    Amigo Oculto
-                </Navbar.Brand>
-            </Navbar>
-        </>
-    );
+class NavbarComponent extends Component {
+
+    render() {
+        const onLogoutPress = () => {
+            this.props.logoutUser();
+        };
+
+        const {auth} = this.props;
+        let navComponent = null;
+
+        if (auth.isAuthenticated) {
+            navComponent = (
+                <>
+                    <Navbar sticky="top" bg="light" variant="light" className="justify-content-between">
+                        <Navbar.Brand href="/">
+                            <img
+                                alt="LOGO"
+                                src={Logo}
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top"
+                            />{' '}
+                            Amigo Oculto
+                        </Navbar.Brand>
+                        <Navbar.Collapse className="justify-content-end mr-sm-2">
+                            <Navbar.Text>
+                                Bem-vindo {auth.user.first_name}!
+                            </Navbar.Text>
+                        </Navbar.Collapse>
+                        <Button className="mr-sm-2" variant="outline-danger" onClick={onLogoutPress}>Sair</Button>
+                    </Navbar>
+                </>
+            );
+        } else {
+            navComponent = (
+                <>
+                    <Navbar sticky="top" bg="light" variant="light" className="justify-content-between">
+                        <Navbar.Brand href="/">
+                            <img
+                                alt="LOGO"
+                                src={Logo}
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top"
+                            />{' '}
+                            Amigo Oculto
+                        </Navbar.Brand>
+                        <Form inline>
+                            <Button className="mr-sm-2" variant="outline-primary" href="/cadastro">Cadastrar</Button>
+                            <Button className="mr-sm-2" variant="outline-success" href="/login">Entrar</Button>
+                        </Form>
+                    </Navbar>
+                </>
+            );
+        }
+
+        return (
+            <>
+                {navComponent}
+            </>
+        );
+    }
 }
 
-export default NavbarComponent;
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps, {logoutUser})(NavbarComponent);
