@@ -1,13 +1,11 @@
 import React from 'react';
 import {Row, Col, Container, Card} from "react-bootstrap";
+import {style} from "./styles";
 
 const Landing = () => {
     return (
-        <div
-            style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
-        >
-            <Container
-            >
+        <div style={style.externalDivContainer}>
+            <Container style={style.cardFormContainer}>
                 <Row className="justify-content-xl-center">
                     <Col xl="auto">
                         <Card className="text-center">

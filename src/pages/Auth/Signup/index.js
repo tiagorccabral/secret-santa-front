@@ -4,6 +4,7 @@ import {Formik} from 'formik';
 import {connect} from 'react-redux';
 
 import {registerUser} from "../../../actions/authActions";
+import {style} from "../styles";
 
 class Signup extends Component {
     state = {
@@ -16,8 +17,8 @@ class Signup extends Component {
 
     render() {
         return (
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Container>
+            <div style={style.externalDivContainer}>
+                <Container style={style.cardFormContainer}>
                     <Row className="justify-content-xl-center">
                         <Col xl="8">
                             <Card>
@@ -155,7 +156,7 @@ class Signup extends Component {
                                                         type="invalid">{errors.password_confirmation}</Form.Control.Feedback>
                                                     <Form.Control.Feedback>Campo Válido</Form.Control.Feedback>
                                                 </Form.Group>
-                                                <Row className="justify-content-xl-center">
+                                                <Row className="justify-content-center">
                                                     <Button variant="success" type="submit" disabled={isSubmitting}>
                                                         Cadastrar
                                                     </Button>

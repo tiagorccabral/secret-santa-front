@@ -4,7 +4,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 function ToastAlert () {
     return (
-        <ToastContainer autoClose={4000} />
+        <ToastContainer
+            style={{marginTop: '2em'}}
+            autoClose={4000}
+        />
     );
 }
 

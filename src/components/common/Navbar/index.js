@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navbar, Form, FormControl, Button} from "react-bootstrap";
+import {Navbar, Form, Button} from "react-bootstrap";
 import {connect} from 'react-redux';
 import {logoutUser} from "../../../actions/authActions";
 import Logo from '../../../media/logonova.png'
@@ -33,7 +33,7 @@ class NavbarComponent extends Component {
                                 Bem-vindo {auth.user.first_name}!
                             </Navbar.Text>
                         </Navbar.Collapse>
-                        <Button className="mr-sm-2" variant="outline-danger" onClick={onLogoutPress}>Sair</Button>
+                        <Button className="mr-2" variant="outline-danger" onClick={onLogoutPress}>Sair</Button>
                     </Navbar>
                 </>
             );
@@ -52,8 +52,8 @@ class NavbarComponent extends Component {
                             Amigo Oculto
                         </Navbar.Brand>
                         <Form inline>
-                            <Button className="mr-sm-2" variant="outline-primary" href="/cadastro">Cadastrar</Button>
-                            <Button className="mr-sm-2" variant="outline-success" href="/login">Entrar</Button>
+                            <Button className="mr-2" variant="outline-primary" href="/cadastro">Cadastrar</Button>
+                            <Button className="mr-2" variant="outline-success" href="/login">Entrar</Button>
                         </Form>
                     </Navbar>
                 </>
