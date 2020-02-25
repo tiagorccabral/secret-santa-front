@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {toast} from "react-toastify";
 
 import {apiEndPoint} from "../utils/globals";
 // import setAuthToken from '../utils/setAuthToken';
@@ -14,12 +15,16 @@ export const registerUser = ({userData, history}) => dispatch => {
             history.push('/login');
             dispatch({
                 type: REGISTER_USER_SUCCESS
-            })
+            });
+            toast.success("Conta criada com sucesso!");
         })
-        .catch(err => dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
+        .catch(err => {
+                dispatch({
+                    type: GET_ERRORS,
+                    payload: err.response.data
+                });
+                toast.error("Ocorreu um erro!");
+            }
         );
 };
 

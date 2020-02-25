@@ -5,12 +5,14 @@ import Landing from "../pages/Landing";
 import Navbar from "../components/common/Navbar";
 import Signup from "../pages/Auth/Signup";
 import Login from "../pages/Auth/Login";
+import ToastAlert from "../components/common/ToastAlert";
 // import SignUp from '../pages/SignUp';
 // import Dashboard from '../pages/Dashboard';
 
 function Routes() {
     return (
         <div>
+            <ToastAlert/>
             <Navbar/>
             <Switch>
                 <Route path="/" exact component={Landing}/>
