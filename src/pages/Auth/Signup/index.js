@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Form, Button, Card, Col, Container, Row} from "react-bootstrap";
 import {Formik} from 'formik';
+import {connect} from 'react-redux';
+
+import {registerUser} from "../../../actions/authActions";
 
 class Signup extends Component {
     state = {
@@ -23,10 +26,8 @@ class Signup extends Component {
                                     <Card.Text/>
                                     <Formik
                                         onSubmit={(values, {setSubmitting}) => {
-                                            setTimeout(() => {
-                                                alert(JSON.stringify(values, null, 2));
-                                                setSubmitting(false);
-                                            }, 400);
+                                            this.props.registerUser({userData: values, history: this.props.history});
+                                            setSubmitting(false);
                                         }}
                                         initialValues={this.state}
                                         validate={values => {
@@ -179,4 +180,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default connect(null, {registerUser})(Signup);
