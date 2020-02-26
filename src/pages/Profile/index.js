@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Tab, Tabs} from "react-bootstrap";
 import {style} from "./styles";
 import EditProfile from "./EditProfile";
+import ActiveGames from "../Games/ActiveGames";
 
 class Profile extends Component {
     render () {
@@ -10,7 +11,7 @@ class Profile extends Component {
                 <Container>
                     <Tabs defaultActiveKey="active-games" id="uncontrolled-tab-example">
                         <Tab eventKey="active-games" title="Ver jogos ativos">
-                            <p>teste</p>
+                            <ActiveGames/>
                         </Tab>
                         <Tab eventKey="previous-games" title="Meus jogos anteriores">
                             <p>ola</p>

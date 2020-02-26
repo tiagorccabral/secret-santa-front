@@ -5,15 +5,9 @@ import {Formik} from "formik";
 import {connect} from "react-redux";
 
 import {getAllUsers} from "../../../actions/userActions";
+import {createGame} from "../../../actions/gameActions";
 
 class CreateGame extends Component {
-    state = {
-        email: "",
-        first_name: "",
-        last_name: "",
-        password: "",
-        password_confirmation: ""
-    };
 
     componentDidMount() {
         this.props.getAllUsers();
@@ -35,7 +29,7 @@ class CreateGame extends Component {
                         <Card.Text/>
                         <Formik
                             onSubmit={(values, {setSubmitting}) => {
-                                this.props.editUser({userData: values, history: this.props.history});
+                                this.props.createGame({gameData: values, history: this.props.history});
                                 setSubmitting(false);
                             }}
                             initialValues={{title: '', description: '', minimum_cost: 0, user_ids: []}}
@@ -43,6 +37,9 @@ class CreateGame extends Component {
                                 const errors = {};
                                 if (!values.title) {
                                     errors.title = 'Título é um campo obrigatório';
+                                }
+                                if (values.user_ids.length === 0 || values.user_ids.length === 1) {
+                                    errors.user_ids = 'Você precisa selecioar ao menos dois participantes!'
                                 }
                                 // if (!values.description) {
                                 //     errors.description = 'Sobrenome é um campo obrigatório';
@@ -114,7 +111,7 @@ class CreateGame extends Component {
                                             isValid={touched.last_name && !errors.last_name}
                                             isInvalid={touched.last_name && errors.last_name}
                                             required
-                                            type="float"
+                                            type="number"
                                             name="minimum_cost"
                                             placeholder="50"
                                         />
@@ -139,11 +136,16 @@ class CreateGame extends Component {
                                                         .call(evt.target.selectedOptions)
                                                         .map(option => option.value)
                                                 )}
+                                            isValid={touched.user_ids && !errors.user_ids}
+                                            isInvalid={touched.user_ids && errors.user_ids}
                                             as="select"
                                             multiple={true}
                                         >
                                             {users.length !== 0 ? renderUserOptions(users): ''}
                                         </Form.Control>
+                                        <Form.Control.Feedback
+                                            type="invalid">{errors.user_ids}</Form.Control.Feedback>
+                                        <Form.Control.Feedback>Campo Válido</Form.Control.Feedback>
                                     </Form.Group>
 
                                     <Row className="justify-content-center">
@@ -168,4 +170,4 @@ const mapStateToProps = state => ({
     users: state.users
 });
 
-export default connect(mapStateToProps, {getAllUsers})(CreateGame);
+export default connect(mapStateToProps, {getAllUsers, createGame})(CreateGame);

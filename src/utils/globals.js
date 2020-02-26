@@ -12,13 +12,13 @@ export const setAuthToken = token => {
     }
 };
 
-let jwtToken = localStorage.getItem("jwtToken");
+// let jwtToken = localStorage.getItem("jwtToken");
 
 export const apiRequest = axios.create({
     baseURL: apiEndPoint,
     headers: {
         common: {
-            Authorization: jwtToken !== null ? `Bearer ${jwtToken}`: ''
+            Authorization: localStorage.getItem("jwtToken") !== null ? `Bearer ${localStorage.getItem("jwtToken")}`: ''
         }
     }
 });
