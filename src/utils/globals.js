@@ -11,3 +11,14 @@ export const setAuthToken = token => {
         delete axios.defaults.headers.common['Authorization'];
     }
 };
+
+let jwtToken = localStorage.getItem("jwtToken");
+
+export const apiRequest = axios.create({
+    baseURL: apiEndPoint,
+    headers: {
+        common: {
+            Authorization: jwtToken !== null ? `Bearer ${jwtToken}`: ''
+        }
+    }
+});

@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {style as createGameStyle} from "./styles"
 import {Button, Card, Col, Container, Form, Row, InputGroup} from "react-bootstrap";
 import {Formik} from "formik";
+import {connect} from "react-redux";
+
+import {getAllUsers} from "../../../actions/userActions";
 
 class CreateGame extends Component {
     state = {
@@ -12,7 +15,18 @@ class CreateGame extends Component {
         password_confirmation: ""
     };
 
+    componentDidMount() {
+        this.props.getAllUsers();
+    }
+
     render() {
+        const {users} = this.props.users;
+
+        const renderUserOptions = users => {
+            return users.map(user => (
+                <option key={user.id} value={user.id}>{user.first_name} {user.last_name}</option>
+            ))
+        };
         return (
             <Container style={createGameStyle.externalDivContainer}>
                 <Card style={createGameStyle.tabDivContainer}>
@@ -128,11 +142,7 @@ class CreateGame extends Component {
                                             as="select"
                                             multiple={true}
                                         >
-                                            <option key={1} value={1}>1</option>
-                                            <option key={2} value={2}>2</option>
-                                            <option key={3} value={3}>3</option>
-                                            <option key={4} value={4}>4</option>
-                                            <option key={5} value={5}>5</option>
+                                            {users.length !== 0 ? renderUserOptions(users): ''}
                                         </Form.Control>
                                     </Form.Group>
 
@@ -154,4 +164,8 @@ class CreateGame extends Component {
     }
 }
 
-export default CreateGame;
+const mapStateToProps = state => ({
+    users: state.users
+});
+
+export default connect(mapStateToProps, {getAllUsers})(CreateGame);
