@@ -33,6 +33,11 @@ class NavbarComponent extends Component {
                                 Bem-vindo {auth.user.first_name}!
                             </Navbar.Text>
                         </Navbar.Collapse>
+                        {
+                            auth.user.is_admin ?
+                                <Button className="mr-2" variant="outline-success" href="/criar-jogo">Criar Jogo</Button> :
+                                null
+                        }
                         <Button className="mr-2" variant="outline-danger" onClick={onLogoutPress}>Sair</Button>
                     </Navbar>
                 </>
