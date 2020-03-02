@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Container, Table} from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 import {getAllActiveGames} from "../../../actions/gameActions";
 import moment from "moment";
+import {Link} from "react-router-dom";
 
 moment.locale('pt-br');
 
@@ -21,6 +22,16 @@ class ActiveGames extends Component {
                     <td>{game.id}</td>
                     <td>{game.title}</td>
                     <td>{moment(game.created_at).format('lll')}</td>
+                    <td>
+                        <Link to={{
+                            pathname: `/detalhes-jogo/${game.id}`,
+                            state: { gameID: game.id }
+                        }}>
+                            <Button variant="outline-primary">
+                                Ver detalhes
+                            </Button>
+                        </Link>
+                    </td>
                 </tr>
             ))
         };

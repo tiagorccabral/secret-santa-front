@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {style as createGameStyle} from "./styles"
-import {Button, Card, Col, Container, Form, Row, InputGroup} from "react-bootstrap";
+import {Button, Card, Container, Form, Row, InputGroup} from "react-bootstrap";
 import {Formik} from "formik";
 import {connect} from "react-redux";
 

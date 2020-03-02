@@ -1,4 +1,3 @@
-import {isEmpty} from "../utils/validation";
 import {GET_ALL_USERS_SUCCESS} from '../actions/types';
 
 const initialState = {

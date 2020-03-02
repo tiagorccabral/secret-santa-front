@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {style as profileStyle} from "../styles";
-import {Button, Card, Col, Form, Row} from "react-bootstrap";
+import {Button, Card, Form, Row} from "react-bootstrap";
 import {Formik} from "formik";
 import {connect} from 'react-redux';
 import {editUser} from "../../../actions/userActions";

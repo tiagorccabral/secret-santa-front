@@ -1,5 +1,4 @@
 import {clearErrors} from "./errorActions";
-import axios from "axios";
 import {toast} from "react-toastify";
 import {apiEndPoint, apiRequest} from "../utils/globals";
 import {GET_ALL_USERS_SUCCESS, GET_ERRORS} from "./types";
