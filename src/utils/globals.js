@@ -14,11 +14,15 @@ export const setAuthToken = token => {
 
 // let jwtToken = localStorage.getItem("jwtToken");
 
+const getUserInfo = () => {
+    return localStorage.getItem("jwtToken");
+};
+
 export const apiRequest = axios.create({
     baseURL: apiEndPoint,
     headers: {
         common: {
-            Authorization: localStorage.getItem("jwtToken") !== null ? `Bearer ${localStorage.getItem("jwtToken")}`: ''
+            Authorization: `Bearer ${getUserInfo()}`
         }
     }
 });

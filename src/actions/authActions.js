@@ -46,6 +46,9 @@ export const loginUser = ({userData}) => dispatch => {
 
             // Set current user
             dispatch(setCurrentUser(res.data.user));
+
+            // reload page to avoid problems on first request
+            window.location.reload(false);
             toast.success("Login realizado com sucesso!")
         })
         .catch(err => {
