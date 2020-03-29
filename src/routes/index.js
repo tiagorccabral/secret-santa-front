@@ -9,6 +9,7 @@ import ToastAlert from "../components/common/ToastAlert";
 import Profile from "../pages/Profile";
 import CreateGame from "../pages/Games/CreateGame";
 import ShowGame from "../pages/Games/ShowGame";
+import EditGame from "../pages/Games/EditGame";
 // import SignUp from '../pages/SignUp';
 // import Dashboard from '../pages/Dashboard';
 
@@ -24,6 +25,7 @@ function Routes() {
                 <Route path="/meu-perfil" component={Profile} isPrivate />
                 <Route path="/criar-jogo" component={CreateGame} isPrivate isAdmin />
                 <Route path="/detalhes-jogo/:gameID" component={ShowGame} isPrivate />
+                <Route path="/editar-jogo/:gameID" component={EditGame} isPrivate />
                 {/*<Route path="/dashboard" component={Dashboard} isPrivate />*/}
             </Switch>
         </div>

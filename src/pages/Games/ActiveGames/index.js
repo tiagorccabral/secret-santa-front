@@ -32,6 +32,18 @@ class ActiveGames extends Component {
                             </Button>
                         </Link>
                     </td>
+                    {game.creator_id === this.props.auth.user.id ? (
+                        <td>
+                            <Link to={{
+                                pathname: `/editar-jogo/${game.id}`,
+                                state: { gameID: game.id }
+                            }}>
+                                <Button variant="outline-warning">
+                                    Editar Jogo
+                                </Button>
+                            </Link>
+                        </td>
+                    ): null}
                 </tr>
             ))
         };
@@ -64,6 +76,7 @@ class ActiveGames extends Component {
 }
 
 const mapStateToProps = state => ({
+    auth: state.auth,
     games: state.games
 });
 

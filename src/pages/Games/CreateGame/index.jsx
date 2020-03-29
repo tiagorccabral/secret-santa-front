@@ -32,7 +32,7 @@ class CreateGame extends Component {
                                 this.props.createGame({gameData: values, history: this.props.history});
                                 setSubmitting(false);
                             }}
-                            initialValues={{title: '', description: '', minimum_cost: 0, user_ids: []}}
+                            initialValues={{title: '', description: '', minimum_cost: 0, creator_id: this.props.auth.user.id, user_ids: []}}
                             validate={values => {
                                 const errors = {};
                                 if (!values.title) {
@@ -167,7 +167,8 @@ class CreateGame extends Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.users
+    users: state.users,
+    auth: state.auth
 });
 
 export default connect(mapStateToProps, {getAllUsers, createGame})(CreateGame);
